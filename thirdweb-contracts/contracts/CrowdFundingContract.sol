@@ -70,4 +70,21 @@ contract CrowdFundingContract {
         }
         return allCampaigns;
     }
+
+    function getUserDonations(address _user) view public returns (uint256[] memory, uint256) {
+        uint256[] memory userDonations = new uint256[](campaignsCount);
+        uint256 totalDonated = 0;
+
+        for (uint256 c = 0; c < campaignsCount; c++) {
+            Campaign storage campaign = campaigns[c];
+            for (uint256 d = 0; d < campaign.donators.length; d++) {
+                if (campaign.donators[d] == _user) {
+                    userDonations[c] += campaign.donations[d];
+                    totalDonated += campaign.donations[d];
+                }
+            }
+        }
+
+        return (userDonations, totalDonated);
+    }
 }
