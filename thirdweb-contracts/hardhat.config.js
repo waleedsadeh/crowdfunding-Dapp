@@ -39,6 +39,12 @@ module.exports = {
   },
   solidity: {
     version: "0.8.23",
+    defaultNetwork: "sepolia",
+    networks: {
+      sepolia: {
+        url: "https://rpc.ankr.com/eth_sepolia/387c792db64835e2d5f7f75fcc27cc7fb37d63f99e8e2bfed058fbc9091a7eb2",
+      },
+    },
     settings: {
       optimizer: {
         enabled: true,
