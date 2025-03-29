@@ -9,7 +9,6 @@ import search from './search.svg';
 import menu from './menu.svg';
 import loader from './loader.svg';
 import thirdweblogo from './thirdweblogo.png';
-import history from './history.svg';
 
 export {
   tagType,
@@ -21,7 +20,6 @@ export {
   withdraw,
   search,
   menu,
-  history,
   loader,
   thirdweblogo,
 };
