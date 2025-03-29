@@ -1,4 +1,6 @@
 import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function FormField ({ labelName, placeholder, inputType, isTextArea, value, handleChange }) {
     return (
@@ -15,6 +17,14 @@ function FormField ({ labelName, placeholder, inputType, isTextArea, value, hand
             placeholder={placeholder}
             className="py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#808191] bg-transparent font-poppins text-white text-[14px] placeholder:text-[#4b5264] rounded-[20px] sm:min-w-[300px]"
           />
+        ) : inputType === "date" ? (
+            <DatePicker
+                selected={value}
+                onChange={handleChange}
+                dateFormat="yyyy-MM-dd"
+                placeholderText={placeholder}
+                className="w-full py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#808191] bg-transparent font-poppins text-white text-[14px] placeholder:text-[#4b5264] rounded-[20px] sm:min-w-[300px]"
+            />
         ) : (
           <input 
             required
@@ -25,7 +35,7 @@ function FormField ({ labelName, placeholder, inputType, isTextArea, value, hand
             placeholder={placeholder}
             className="py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#808191] bg-transparent font-poppins text-white text-[14px] placeholder:text-[#4b5264] rounded-[20px] sm:min-w-[300px]"
           />
-        )}
+        ) }
       </label>
     );  
 }

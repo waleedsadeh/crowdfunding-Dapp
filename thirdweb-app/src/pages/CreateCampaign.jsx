@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import { CustomButton, FormField } from "../components";
 import { checkIfImage } from "../utils/util";
+
 function CreateCampaign() {    
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +18,7 @@ function CreateCampaign() {
         deadline: "",
         image: "",
     });
-    
+
     return (
         <div className="bg-[#171a19] flex justify-center items-center flex-col rounded-[20px] sm:p-10 p-4">
             {isLoading && 'Loading...'}
@@ -32,7 +33,7 @@ function CreateCampaign() {
                 <FormField labelName="description *" placeholder="Write about the campaign" isTextArea={true} value={form.description} handleChange={() => {}}/>
                 <div className="flex flex-wrap gap-[40px]">
                     <FormField labelName="Amount *" placeholder="ETH 5.10" inputType="text" value={form.target} handleChange={() => {}}/>
-                    <FormField labelName="End Date *" placeholder="Select a date" inputType="date" value={form.deadline } handleChange={() => {}}/>
+                    <FormField labelName="End Date *" placeholder="Select a date" inputType="date" value={form.deadline } handleChange={(date) => setForm({ ...form, deadline: date })}/>
                 </div>
                 <FormField labelName="Campaign image *" placeholder="Place image URL of your campaign" inputType="url" value={form.image} handleChange={() => {}}/>
                 <div className="flex justify-center items-center mt-[40px]">
