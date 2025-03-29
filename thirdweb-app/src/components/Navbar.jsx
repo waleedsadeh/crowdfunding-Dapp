@@ -23,7 +23,7 @@ function Navbar() {
             <div className="sm:flex hidden flex-row justify-center gap-4">
                 <CustomButton btnType="button" 
                 title={address ? 'Create a campaign' : 'Connect'} 
-                styles={address ? 'bg-[#1e76db]' : 'bg-[#24c2c8]'}
+                styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
                 handleClick={() => {
                     if(address) {
                         navigate('create-campaign')
@@ -31,18 +31,18 @@ function Navbar() {
                         navigate('later')
                     }}}/>
                 <Link to="/profile">
-                    <div className="w-[52px] h-[52px] rounded-full bg-[#2c2f32] flex justify-center items-center cursor-pointer">
+                    <div className="w-[52px] h-[52px] rounded-full bg-[#171a19] flex justify-center items-center cursor-pointer">
                         <img src={profile} alt="user" className="w-[60%] h-[60%] object-contain " />
                     </div>
                 </Link>
             </div>
                 <div className="sm:hidden flex justify-between items-center relative">
-                    <div className="w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer">
+                    <div className="w-[40px] h-[40px] rounded-[10px] bg-[#171a19] flex justify-center items-center cursor-pointer">
                         <img src={profile} alt="user" className="w-[60%] h-[60%] object-contain " />
                     </div>
                     <img src={menu} className="w-[28px] h-[28px] object-contain cursor-pointer" alt="menu"
                     onClick={() => setToggleDrawer(!toggleDrawer)}/>
-                    <div className={`absolute top-[60px] right-0 left-0 bg-[#1c1c24] z-10 shadow-secondary py-4 ${!toggleDrawer ? '-translate-y-[100vh]' : 'translate-y-0'} transition-all duration-700`}>
+                    <div className={`absolute top-[60px] right-0 left-0 bg-[#171a19] z-10 shadow-secondary py-4 ${!toggleDrawer ? '-translate-y-[100vh]' : 'translate-y-0'} transition-all duration-700`}>
                         <ul className="mb-4">
                             {navlinks.map((link) => (
                                 <li

@@ -17,7 +17,7 @@ function Sidebar() {
     const navigate = useNavigate();
     const [active, setActive] = useState("dashboard");
     return (
-        <div className="flex justify-between items-center flex-col sticky top-5 h-[93vh]">            
+        <div className="flex justify-between items-center flex-col sticky top-5 h-[62vh]">            
             <Link to="/">
                 <Icon styles="w-[64px] h-[64px] rounded-[20px] bg-[#171a19]"  imgUrl={thirdweblogo}/>
             </Link>
