@@ -58,8 +58,12 @@ contract CrowdFundingContract {
 
     function getDonators(uint256 _id) view public returns (address[] memory, uint256[] memory) {
         return (campaigns[_id].donators, campaigns[_id].donations);
-
     }
+    // make a function to get active campaigns only to display on the dashboard
+    // function getActiveCampaigns()
+
+    // make a function to get all Campaigns Made By Owner to display on the profile
+    // function getCampaignsByOwner(address _owner)
 
     function getCampaigns() view public returns (Campaign[] memory){
         Campaign[] memory allCampaigns = new Campaign[](campaignsCount);
