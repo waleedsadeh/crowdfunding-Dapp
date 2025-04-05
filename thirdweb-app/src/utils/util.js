@@ -1,17 +1,17 @@
 export const daysLeft = (deadline) => {
-    const difference = new Date(deadline).getTime() - Date.now();
-    const remainingDays = difference / (1000 * 3600 * 24);
+    const now = Math.floor(Date.now() / 1000); // Current time in seconds
+    const timeLeft = deadline - now; // Time left in seconds
+    const daysLeft = Math.ceil(timeLeft / (60 * 60 * 24)); // Convert seconds to days
+    return daysLeft > 0 ? daysLeft : 0; // Return 0 if the deadline has passed
+};
   
-    return remainingDays.toFixed(0);
-  };
-  
-  export const calculateBarPercentage = (goal, raisedAmount) => {
-    const percentage = Math.round((raisedAmount * 100) / goal);
+export const calculateBarPercentage = (goal, amountRaised) => {
+    const percentage = Math.round((amountRaised * 100) / goal);
   
     return percentage;
-  };
+};
   
-  export const checkIfImage = (url, callback) => {
+export const checkIfImage = (url, callback) => {
     const img = new Image();
     img.src = url;
   
@@ -19,5 +19,4 @@ export const daysLeft = (deadline) => {
   
     img.onload = () => callback(true);
     img.onerror = () => callback(false);
-  };
-  
+};

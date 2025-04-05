@@ -3,13 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { CustomButton } from './';
 import { navlinks } from '../navlinks';
 import { search, profile, menu} from '../assets';
+import { useStateContext } from '../contract-functions';
 
 function Navbar() {
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState("dashboard");
     const [toggleDrawer, setToggleDrawer] = useState(false);
 
-    const address = "0x1234567890abcdef1234567890abcdef12345678"; // Replace with actual address
+    const { connect, address } = useStateContext();    
+
     return (
         <div className="flex md:flex-row flex-col-reverse justify-between gap-6 mb-[35px]">
             <div className="lg:flex-1 flex flex-row rounded-[20px]  max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-[#171a19]">
@@ -28,7 +30,7 @@ function Navbar() {
                     if(address) {
                         navigate('create-campaign')
                     } else {
-                        navigate('later')
+                        connect();
                     }}}/>
                 <Link to="/profile">
                     <div className="w-[52px] h-[52px] rounded-full bg-[#171a19] flex justify-center items-center cursor-pointer">
@@ -71,8 +73,8 @@ function Navbar() {
                             handleClick={() => {
                                 if(address) navigate('create-campaign')
                                 else connect();
-}}/>
-            </div>      
+                            }}/>
+                        </div>      
                     </div>
                 </div>  
         </div>

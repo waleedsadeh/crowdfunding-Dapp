@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Sidebar, Navbar } from "./components";
-import { Home, Profile, CreateCampaign,CampaignDetails } from "./pages";
+import { Home, Profile, CreateCampaign,CampaignDetails,PaymentHistory } from "./pages";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
             <Route path="/create-campaign" element={<CreateCampaign/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/campaign-details/:id" element={<CampaignDetails/>} />
+            <Route path="/payment-history" element={<PaymentHistory/>}/>
         </Routes>
       </div>
     </div>
