@@ -18,6 +18,16 @@ contract CrowdFundingContract {
 
     uint256 public campaignsCount = 0;
 
+    /**
+     * @dev Creates a new campaign with the provided details.
+     * @param _title Title of the campaign.
+     * @param _description Description of the campaign.
+     * @param _owner Address of the campaign owner.
+     * @param _goal Funding goal for the campaign.
+     * @param _deadline Deadline for the campaign in UNIX timestamp.
+     * @param _image URL of the campaign image.
+     * @return The ID of the newly created campaign.
+     */
     function createCampaign(
         string memory _title,
         string memory _description,
@@ -41,6 +51,10 @@ contract CrowdFundingContract {
         return campaignsCount - 1;
     }
 
+    /**
+     * @dev Allows users to fund a specific campaign by sending ETH.
+     * @param _id ID of the campaign to fund.
+     */
     function fundCampaign(uint256 _id) public payable {
         uint256 amount = msg.value;
 
@@ -56,10 +70,19 @@ contract CrowdFundingContract {
         }
     }
 
+    /**
+     * @dev Retrieves the list of donators and their respective donations for a campaign.
+     * @param _id ID of the campaign.
+     * @return Two arrays: one with donator addresses and another with donation amounts.
+     */
     function getDonators(uint256 _id) view public returns (address[] memory, uint256[] memory) {
         return (campaigns[_id].donators, campaigns[_id].donations);
     }
 
+    /**
+     * @dev Retrieves all campaigns created in the contract.
+     * @return An array of all campaigns.
+     */
     function getCampaigns() view public returns (Campaign[] memory){
         Campaign[] memory allCampaigns = new Campaign[](campaignsCount);
 
@@ -70,6 +93,11 @@ contract CrowdFundingContract {
         return allCampaigns;
     }
 
+    /**
+     * @dev Retrieves the donation history of a specific user across all campaigns.
+     * @param _user Address of the user.
+     * @return Two values: an array of donation amounts per campaign and the total donated amount.
+     */
     function getUserDonations(address _user) view public returns (uint256[] memory, uint256) {
         uint256[] memory userDonations = new uint256[](campaignsCount);
         uint256 totalDonated = 0;

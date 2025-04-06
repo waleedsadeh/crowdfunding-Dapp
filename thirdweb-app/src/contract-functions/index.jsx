@@ -11,6 +11,10 @@ export const StateContextProvider = ({ children }) => {
     const address = useAddress();
     const connect = useMetamask(); // Use the useMetamask hook for wallet connection
 
+    /**
+     * @dev Publishes a new campaign to the blockchain.
+     * @param form Object containing campaign details (title, description, goal, deadline, image).
+     */
     const publishCampaign = async (form) => {
         try {
             // Convert goal to wei
@@ -34,6 +38,10 @@ export const StateContextProvider = ({ children }) => {
         }
     };
 
+    /**
+     * @dev Fetches all campaigns from the blockchain.
+     * @return An array of parsed campaign objects.
+     */
     const getCampaigns = async () => {
         try {
             const campaigns = await contract.call("getCampaigns");
@@ -57,6 +65,10 @@ export const StateContextProvider = ({ children }) => {
         }
     };
 
+    /**
+     * @dev Fetches campaigns created by the connected user.
+     * @return An array of campaigns owned by the user.
+     */
     const getUserCampaigns = async () => {
         const allCampaigns = await getCampaigns();
 
@@ -64,11 +76,21 @@ export const StateContextProvider = ({ children }) => {
         return filteredCampaigns;
     };
 
+    /**
+     * @dev Funds a specific campaign by sending ETH.
+     * @param pId ID of the campaign to fund.
+     * @param amount Amount of ETH to send.
+     */
     const fundCampaign = async (pId, amount) => {
         const data = await contract.call("fundCampaign", [pId], {value: ethers.utils.parseEther(amount)});
         return data;
     }
 
+    /**
+     * @dev Retrieves the list of donators and their donations for a specific campaign.
+     * @param pId ID of the campaign.
+     * @return An array of donator objects with addresses and donation amounts.
+     */
     const getDonations = async (pId) => {
         const donations = await contract.call("getDonators", [pId]);
         const numberOfDonations = donations[0].length;
@@ -84,6 +106,11 @@ export const StateContextProvider = ({ children }) => {
         return parsedDonations;
     }
 
+    /**
+     * @dev Retrieves the donation history of a specific user.
+     * @param userAddress Address of the user.
+     * @return Two values: an array of donation amounts per campaign and the total donated amount.
+     */
     const getUserDonations = async (userAddress) => {
         const [userDonations, totalDonated] = await contract.call("getUserDonations", [userAddress]);
         const parsedDonations = userDonations.map((donation) => ethers.utils.formatEther(donation.toString()));
