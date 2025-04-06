@@ -1,51 +1,10 @@
 ## Getting Started
 
-Create a project using this example
+This contract is deployed and released on [thirdweb.com](https://thirdweb.com/) and the secret key with the client ID should not change
 
-```bash
-npx thirdweb@latest create --contract
+## How to run the App???
+
+Navigate to the thirdweb-app folder using 
 ```
-
-You can start editing the page by modifying `contracts/Contract.sol`.
-
-To add functionality to your contracts, you can use the `@thirdweb-dev/contracts` package which provides base contracts and extensions to inherit. The package is already installed with this project. Head to our [Contracts Extensions Docs](https://portal.thirdweb.com/contractkit) to learn more.
-
-## Building the project
-
-After any changes to the contract, run:
-
-```bash
-npm run build
-# or
-yarn build
-```
-
-to compile your contracts. This will also detect the [Contracts Extensions Docs](https://portal.thirdweb.com/contractkit) detected on your contract.
-
-## Deploying Contracts
-
-When you're ready to deploy your contracts, just run one of the following command to deploy you're contracts:
-
-```bash
-npm run deploy
-# or
-yarn deploy
-```
-
-> [!IMPORTANT]
-> This requires a secret key to make it work. Get your secret key [here](https://thirdweb.com/dashboard/settings/api-keys).
-> Pass your secret key as a value after `-k` flag.
-> ```bash
-> npm run deploy -- -k <your-secret-key>
-> # or
-> yarn deploy -k <your-secret-key>
-
-## Releasing Contracts
-
-If you want to release a version of your contracts publicly, you can use one of the followings command:
-
-```bash
-npm run release
-# or
-yarn release
-```
+cd thirdweb-app
+````
