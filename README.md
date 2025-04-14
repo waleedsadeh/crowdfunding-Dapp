@@ -9,7 +9,7 @@ Navigate to the thirdweb-app folder using
 cd thirdweb-app
 ````
 
-## Install npm dependencies (only when you are in the thirdweb-app folder)
+## Install npm dependencies (only when you are in the thirdweb-app folder) AND It will take like 5 minutes to install the nodes modules because of how big my code is
 ```
 npm install
 ```
